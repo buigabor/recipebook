@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ShoppingCart';
   currentPage = 'recipes';
-  showPage(page: string) {
+  showPage(page: string): void {
     this.currentPage = page;
   }
 }
