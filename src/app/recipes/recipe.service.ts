@@ -28,7 +28,7 @@ export class RecipeService {
     return [...this.recipes];
   }
 
-  toShoppingList(ingredient: Ingredient[]): void {
-    this.shoppingListService.toShoppingList(ingredient);
+  toShoppingList(ingredients: Ingredient[]): void {
+    this.shoppingListService.toShoppingList(ingredients);
   }
 }

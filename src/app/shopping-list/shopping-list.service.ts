@@ -22,9 +22,11 @@ export class ShoppingListService {
     return [...this.ingredients];
   }
 
-  toShoppingList(ingredient: Ingredient[]): void {
-    for (const ingredientEl of ingredient) {
-      this.ingredients.push(ingredientEl);
-    }
+  toShoppingList(ingredients: Ingredient[]): void {
+    // for (const ingredientEl of ingredient) {
+    //   this.ingredients.push(ingredientEl);
+    // }
+
+    this.ingredients.push(...ingredients);
   }
 }
