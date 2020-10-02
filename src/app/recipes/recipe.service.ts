@@ -12,7 +12,7 @@ export class RecipeService {
     new Recipe(
       'Eggs benedict',
       'Eggs and benedict and eggs',
-      'https://upload.wikimedia.org/wikipedia/commons/e/ec/Eggs_Benedict-01.jpg',
+      'https://prods3.imgix.net/images/articles/2017_08/Non-Feature-eggs-benedict-recipe-breakfast1.jpg?auto=format%2Ccompress&dpr=2&ixjsv=2.2.3&q=50&w=750',
       [new Ingredient('Eggs', 3), new Ingredient('Hollanaise Sauce', 1)]
     ),
     new Recipe(
@@ -23,6 +23,10 @@ export class RecipeService {
     ),
   ];
   constructor(private shoppingListService: ShoppingListService) {}
+
+  getRecipe(index: number): Recipe {
+    return this.recipes[index];
+  }
 
   getRecipes(): Recipe[] {
     return [...this.recipes];
