@@ -1,15 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit(form)" #form="ngForm">
-      <div class="row">
-        <div class="col-xs-12">
-          <button type="submit" class="btn btn-success">Save</button>
-          <button type="button" class="btn btn-danger" style="margin: 0 5px">
-            Cancel
-          </button>
-        </div>
-      </div>
-
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" #form="ngForm">
       <div class="row" style="margin-top: 15px">
         <div class="col-xs-12">
           <div class="form-group">
@@ -33,6 +24,7 @@
               id="imagePath"
               class="form-control"
               formControlName="imagePath"
+              #imagePath
             />
           </div>
         </div>
@@ -40,7 +32,7 @@
 
       <div class="row">
         <div class="col-xs-12">
-          <img src="" class="img-responsive" />
+          <img [src]="imagePath.value" class="img-responsive" />
         </div>
       </div>
 
@@ -79,20 +71,52 @@
             </div>
 
             <div class="col-xs-2">
-              <button class="btn btn-danger">X</button>
+              <button
+                class="btn btn-danger"
+                type="button"
+                (click)="onDeleteIngredient(i)"
+              >
+                X
+              </button>
             </div>
           </div>
         </div>
       </div>
       <hr />
-      <div class="row">
-        <div class="col-xs-12">
+      <div class="row" style="padding-bottom: 5rem">
+        <div class="col-xs-8">
           <button
             type="button"
             class="btn btn-success"
             (click)="onAddIngredient()"
           >
             Add Ingredient
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-danger"
+            style="margin: 0 10px"
+            (click)="onDeleteAll()"
+          >
+            Delete All Ingredients
+          </button>
+        </div>
+        <div class="col-xs-4">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="recipeForm.invalid"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="onCancel()"
+            style="margin: 0 5px"
+          >
+            Cancel
           </button>
         </div>
       </div>
