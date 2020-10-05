@@ -10,11 +10,11 @@ export class Recipe {
     name: string,
     description: string,
     imagePath: string,
-    ingredient: Ingredient[]
+    ingredients: Ingredient[]
   ) {
     this.name = name;
     this.description = description;
     this.imagePath = imagePath;
-    this.ingredients = ingredient;
+    this.ingredients = ingredients;
   }
 }
