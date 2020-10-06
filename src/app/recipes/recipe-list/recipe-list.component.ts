@@ -1,12 +1,4 @@
-import { DataStorageService } from './../../shared/data-storage.service';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  OnDestroy,
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';

@@ -4,6 +4,7 @@ import { map, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipe } from '../recipes/recipe.model';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
@@ -18,14 +19,14 @@ export class DataStorageService {
       });
   }
 
-  fetchRecipes() {
+  fetchRecipes(): Observable<Recipe[]> {
     return (
       this.http
         .get<Recipe[]>(
           'https://ng-recipe-book-2a63a.firebaseio.com/recipes.json'
         )
-        //we need to insert ingredients here, even if we dont have them in the recipe
-        //to avoid bugs
+        // we need to insert ingredients here, even if we dont have them in the recipe
+        // to avoid bugs
         .pipe(
           map((recipes) => {
             return recipes.map((recipe: Recipe) => {

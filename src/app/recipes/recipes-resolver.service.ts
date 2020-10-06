@@ -8,6 +8,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { DataStorageService } from '../shared/data-storage.service';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class RecipesResolverService implements Resolve<Recipe[]> {
@@ -16,7 +17,10 @@ export class RecipesResolverService implements Resolve<Recipe[]> {
     private recipeService: RecipeService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  resolve(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Recipe[] | Observable<Recipe[]> {
     const recipes = this.recipeService.getRecipes();
     if (recipes.length === 0) {
       return this.dataStorageService.fetchRecipes();
