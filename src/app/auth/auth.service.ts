@@ -1,7 +1,10 @@
-import { throwError, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { User } from './user.model';
+import { throwError, Observable, BehaviorSubject } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import * as config from './config.json';
 
 export interface AuthResponseData {
@@ -16,8 +19,10 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private http: HttpClient) {}
   key = config.MY_KEY;
+  user = new BehaviorSubject<User>(null);
+
+  constructor(private http: HttpClient, private router: Router) {}
 
   signUp(email: string, password: string): Observable<AuthResponseData> {
     return this.http
@@ -26,7 +31,17 @@ export class AuthService {
           this.key,
         { email, password, returnSecureToken: true }
       )
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError(this.handleError),
+        tap((responseData) => {
+          this.handleAuthentication(
+            responseData.email,
+            responseData.localId,
+            responseData.idToken,
+            +responseData.expiresIn
+          );
+        })
+      );
   }
 
   login(email: string, password: string): Observable<AuthResponseData> {
@@ -36,10 +51,36 @@ export class AuthService {
           this.key,
         { email, password, returnSecureToken: true }
       )
-      .pipe(catchError(this.handleError));
+      .pipe(
+        catchError(this.handleError),
+        tap((responseData) => {
+          this.handleAuthentication(
+            responseData.email,
+            responseData.localId,
+            responseData.idToken,
+            +responseData.expiresIn
+          );
+        })
+      );
   }
 
-  private handleError(errorRes: HttpErrorResponse) {
+  logout(): void {
+    this.user.next(null);
+    this.router.navigate(['./auth']);
+  }
+
+  private handleAuthentication(
+    email: string,
+    userId: string,
+    tokenId: string,
+    expiresIn: number
+  ): void {
+    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    const user = new User(email, userId, tokenId, expirationDate);
+    this.user.next(user);
+  }
+
+  private handleError(errorRes: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occured';
     if (!errorRes.error || !errorRes.error.error) {
       return throwError(errorMessage);
