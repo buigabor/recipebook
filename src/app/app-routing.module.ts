@@ -7,13 +7,14 @@ import { RecipeHomeComponent } from './recipes/recipe-home/recipe-home.component
 import { RecipesComponent } from './recipes/recipes.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'recipes', pathMatch: 'full' },
-  { path: 'shopping-list', component: ShoppingListComponent },
   {
     path: 'recipes',
     component: RecipesComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: RecipeHomeComponent },
       { path: 'new', component: RecipeEditComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
       },
     ],
   },
+  { path: 'shopping-list', component: ShoppingListComponent },
   { path: 'auth', component: AuthComponent },
 ];
 
