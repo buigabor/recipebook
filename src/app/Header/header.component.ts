@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../auth/auth.service';
 import { DataStorageService } from './../shared/data-storage.service';
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private dataStorageService: DataStorageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onFetchData(): void {
     this.dataStorageService.fetchRecipes().subscribe();
+    this.router.navigate(['./recipes']);
   }
 
   onLogout(): void {

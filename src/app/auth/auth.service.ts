@@ -96,7 +96,7 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }
 
-  autoLogout(expirationDuration: number) {
+  autoLogout(expirationDuration: number): void {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
@@ -120,14 +120,17 @@ export class AuthService {
     if (!errorRes.error || !errorRes.error.error) {
       return throwError(errorMessage);
     }
+
     switch (errorRes.error.error.message) {
       case 'EMAIL_EXISTS':
         errorMessage = 'This email already exists!';
         break;
-      case 'EMAIL_NOT_FOUND' || 'INVALID_PASSWORD':
+      case 'EMAIL_NOT_FOUND':
+      case 'INVALID_PASSWORD':
         errorMessage = 'Invalid User Data';
         break;
     }
+
     return throwError(errorMessage);
   }
 }

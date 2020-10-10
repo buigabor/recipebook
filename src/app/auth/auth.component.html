@@ -4,11 +4,11 @@
       <app-loading-spinner></app-loading-spinner>
     </div>
     <!-- ERROR MESSAGE START -->
-    <div *ngIf="!isLoading && error" class="alert alert-danger">
-      <h5>
-        {{ error }}
-      </h5>
-    </div>
+    <app-alert
+      *ngIf="!isLoading && error"
+      [message]="error"
+      (closeThis)="onHandleClose()"
+    ></app-alert>
     <!-- ERROR MESSAGE END -->
     <form (ngSubmit)="onSubmit(form)" #form="ngForm" *ngIf="!isLoading">
       <div class="form-group">
