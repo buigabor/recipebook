@@ -4,11 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ShoppingListEditComponent } from './shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './shopping-list.component';
-import { CommonModule } from '@angular/common';
 
-const routes: Routes = [
-  { path: 'shopping-list', component: ShoppingListComponent },
-];
+const routes: Routes = [{ path: '', component: ShoppingListComponent }];
 
 @NgModule({
   declarations: [ShoppingListComponent, ShoppingListEditComponent],

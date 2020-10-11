@@ -2,15 +2,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
 import { CommonModule } from '@angular/common';
-import { AuthService } from './auth.service';
 import { AuthComponent } from './auth.component';
 import { NgModule } from '@angular/core';
 
-const routes: Routes = [{ path: 'auth', component: AuthComponent }];
+const routes: Routes = [{ path: '', component: AuthComponent }];
 
 @NgModule({
   declarations: [AuthComponent],
-  providers: [AuthService],
   imports: [
     CommonModule,
     SharedModule,
