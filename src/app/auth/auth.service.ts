@@ -1,3 +1,4 @@
+
 import { Router } from '@angular/router';
 import { User } from './user.model';
 import { throwError, Observable, BehaviorSubject } from 'rxjs';
@@ -19,7 +20,6 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  key = config.MY_KEY;
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
 
@@ -29,7 +29,8 @@ export class AuthService {
     return this.http
       .post<AuthResponseData>(
         'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
-          this.key,
+
+                   config.firebaseAPIKey,
         { email, password, returnSecureToken: true }
       )
       .pipe(
@@ -48,8 +49,7 @@ export class AuthService {
   login(email: string, password: string): Observable<AuthResponseData> {
     return this.http
       .post<AuthResponseData>(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
-          this.key,
+        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + config.firebaseAPIKey,
         { email, password, returnSecureToken: true }
       )
       .pipe(
