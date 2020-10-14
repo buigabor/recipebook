@@ -21,14 +21,14 @@
       <!-- SHOPPING LIST BUTTONS START -->
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="submit" [disabled]="form.invalid">
+          <button class="btn btn-success" type="submit" [disabled]="form.invalid"
+            [ngStyle]="{ 'margin-right': editMode ? '0' : '5px' }">
             {{ editMode ? "Update" : "Add" }}
           </button>
           <button class="btn btn-danger" type="button" style="margin: 0 5px" *ngIf="editMode" (click)="onDelete()">
             Delete
           </button>
-          <button class="btn btn-primary" type="button" (click)="onClear()"
-            [ngStyle]="{ margin: editMode ? '0 5px' : '0' }">
+          <button class="btn btn-primary" type="button" (click)="onClear()">
             Clear
           </button>
         </div>

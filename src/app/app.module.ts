@@ -7,6 +7,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Header/header.component';
 import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromAppReducer from './store/app.reducer';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -16,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     SharedModule,
     CoreModule,
+    StoreModule.forRoot(fromAppReducer.appReducer),
   ],
   bootstrap: [AppComponent],
 })
