@@ -18,7 +18,7 @@ export function authReducer(
         action.payload.email,
         action.payload.userId,
         action.payload.token,
-        action.payload.expirationData
+        action.payload.expirationDate
       );
       return { ...state, user };
     case AuthActions.LOGOUT:
