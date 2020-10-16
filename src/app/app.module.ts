@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+import { AuthEffects } from './auth/store/auth.effects';
 import { CoreModule } from './core.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -8,6 +10,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './Header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromAppReducer from './store/app.reducer';
 
 @NgModule({
@@ -19,6 +23,8 @@ import * as fromAppReducer from './store/app.reducer';
     SharedModule,
     CoreModule,
     StoreModule.forRoot(fromAppReducer.appReducer),
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
   ],
   bootstrap: [AppComponent],
 })
