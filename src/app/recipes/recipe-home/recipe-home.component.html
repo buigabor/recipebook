@@ -1,2 +1,2 @@
-<h3 *ngIf="!this.noRecipesFetched">Please select a recipe!</h3>
-<h4 class="text-danger" *ngIf="this.noRecipesFetched">There are no recipes in the database, please create new ones!</h4>
+<h3 *ngIf="!this.notFetched">Please select a recipe!</h3>
+<h4 *ngIf="this.notFetched" class="text-danger">No recipes found, please create new ones!</h4>

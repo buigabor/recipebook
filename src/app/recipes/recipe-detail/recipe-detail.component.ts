@@ -45,12 +45,14 @@ export class RecipeDetailComponent implements OnInit {
   toShoppingList(): void {
     // this.recipeService.toShoppingList(this.recipe.ingredients);
     this.store.dispatch(
-      new ShoppingListActions.AddIngredients(this.recipe.ingredients)
+      ShoppingListActions.addIngredients({
+        ingredients: this.recipe.ingredients,
+      })
     );
   }
 
   onDelete(): void {
-    this.store.dispatch(new RecipesActions.DeleteRecipe(this.id));
+    this.store.dispatch(RecipesActions.deleteRecipe({ index: this.id }));
     this.router.navigate(['/recipes']);
   }
 }

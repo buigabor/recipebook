@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription, Subject } from 'rxjs';
+import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import * as fromAppReducer from '../store/app.reducer';
@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.onFetchData();
     this.userSub = this.store
       .select('auth')
       .pipe(map((authState) => authState.user))
@@ -35,15 +34,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onSaveData(): void {
-    this.store.dispatch(new RecipesActions.StoreRecipe());
+    this.store.dispatch(RecipesActions.storeRecipes());
   }
 
   onFetchData(): void {
-    this.store.dispatch(new RecipesActions.FetchRecipes());
+    this.store.dispatch(RecipesActions.fetchRecipes());
     this.router.navigate(['/recipes']);
   }
 
   onLogout(): void {
-    this.store.dispatch(new AuthActions.Logout());
+    this.store.dispatch(AuthActions.logout());
   }
 }
