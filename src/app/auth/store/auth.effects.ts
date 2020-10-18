@@ -4,8 +4,8 @@ import { Actions, ofType, Effect, createEffect } from '@ngrx/effects';
 import { switchMap, catchError, map, tap, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import * as config from '../config.json';
 
+import { environment } from './../../../environments/environment';
 import * as AuthActions from './auth.actions';
 import { User } from '../user.model';
 import { AuthService } from '../auth.service';
@@ -73,7 +73,7 @@ export class AuthEffects {
         return this.http
           .post<AuthResponseData>(
             'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' +
-              config.firebaseAPIKey,
+              environment.firebaseAPIKey,
             {
               email: action.email,
               password: action.password,
@@ -107,7 +107,7 @@ export class AuthEffects {
         return this.http
           .post<AuthResponseData>(
             'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' +
-              config.firebaseAPIKey,
+              environment.firebaseAPIKey,
             {
               email: action.email,
               password: action.password,
@@ -266,7 +266,7 @@ export class AuthEffects {
 //       return this.http
 //         .post<AuthResponseData>(
 //           'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=' +
-//             config.firebaseAPIKey,
+//             enviroment.firebaseAPIKey,
 //           {
 //             email: signupAction.payload.email,
 //             password: signupAction.payload.password,
@@ -299,7 +299,7 @@ export class AuthEffects {
 //       return this.http
 //         .post<AuthResponseData>(
 //           'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=' +
-//             config.firebaseAPIKey,
+//             enviroment.firebaseAPIKey,
 //           {
 //             email: authData.payload.email,
 //             password: authData.payload.password,
