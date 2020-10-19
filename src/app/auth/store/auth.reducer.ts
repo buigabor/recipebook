@@ -1,3 +1,5 @@
+// ********************************* NGRX New Syntax(V8) *********************************
+
 import { Action, createReducer, on } from '@ngrx/store';
 import { User } from '../user.model';
 import * as AuthActions from './auth.actions';
@@ -52,6 +54,8 @@ const _authReducer = createReducer(
 export function authReducer(state: State, action: Action) {
   return _authReducer(state, action);
 }
+
+// ********************************* NGRX Old Syntax *********************************
 
 // import { User } from './../user.model';
 // import * as AuthActions from './auth.actions';

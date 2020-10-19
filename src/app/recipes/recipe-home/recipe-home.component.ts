@@ -1,11 +1,8 @@
-import { map, switchMap, take, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Actions, ofType } from '@ngrx/effects';
 
 import { Component } from '@angular/core';
 import * as RecipeActions from '../store/recipe.actions';
-import * as fromAppReducer from '../../store/app.reducer';
-import { of } from 'rxjs';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-recipe-home',
@@ -14,10 +11,7 @@ import { Store } from '@ngrx/store';
 })
 export class RecipeHomeComponent {
   notFetched: boolean;
-  constructor(
-    private actions$: Actions,
-    private store: Store<fromAppReducer.AppState>
-  ) {
+  constructor(private actions$: Actions) {
     this.actions$
       .pipe(
         ofType(RecipeActions.setRecipes),

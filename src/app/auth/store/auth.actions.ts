@@ -1,3 +1,5 @@
+// ********************************* NGRX New Syntax(V8) *********************************
+
 import { createAction, props } from '@ngrx/store';
 
 export const loginStart = createAction(
@@ -31,6 +33,9 @@ export const clearError = createAction('[Auth] Clear Error');
 export const autoLogin = createAction('[Auth] Auto Login');
 
 export const logout = createAction('[Auth] Logout');
+
+// ********************************* NGRX Old Syntax *********************************
+
 // export const LOGIN_START = '[Auth] Login Start';
 // export const AUTHENTICATE_SUCCESS = '[Auth] Authenticate Success';
 // export const AUTHENTICATE_FAIL = '[Auth] Authenticate Fail';

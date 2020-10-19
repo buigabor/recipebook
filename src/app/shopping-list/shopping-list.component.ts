@@ -1,7 +1,8 @@
+import { fade } from './../animations';
 import { Ingredient } from './../shared/ingredient.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import * as ShoppingListAcions from './store/shopping-list.actions';
 import * as fromAppRecuer from '../store/app.reducer';
@@ -9,9 +10,9 @@ import * as fromAppRecuer from '../store/app.reducer';
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css'],
+  animations: [fade],
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
-  private ingredientChangeSub: Subscription;
   ingredients: Observable<{ ingredients: Ingredient[] }>;
   constructor(private store: Store<fromAppRecuer.AppState>) {}
 

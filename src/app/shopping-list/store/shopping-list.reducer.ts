@@ -1,3 +1,5 @@
+// ********************************* NGRX New Syntax(V8) *********************************
+
 import { Action, createReducer, on } from '@ngrx/store';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 import * as ShoppingListActions from './shopping-list.actions';
@@ -54,6 +56,8 @@ const _shoppingListReducer = createReducer(
 export function shoppingListReducer(state: State, action: Action) {
   return _shoppingListReducer(state, action);
 }
+
+// ********************************* NGRX Old Syntax *********************************
 
 // import { Ingredient } from './../../shared/ingredient.model';
 // import * as ShoppingListActions from './shopping-list.actions';

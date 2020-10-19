@@ -1,3 +1,5 @@
+// ********************************* NGRX New Syntax(V8) *********************************
+
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, ofType, Effect, createEffect } from '@ngrx/effects';
@@ -152,6 +154,7 @@ export class AuthEffects {
       ofType(AuthActions.autoLogin),
       map(() => {
         const user = localStorage.getItem('userData');
+
         if (!user) {
           // Return Dummy action
           return { type: 'DUMMY' };
@@ -174,7 +177,7 @@ export class AuthEffects {
             userId: userData.id,
             token: userData._token,
             expirationDate: new Date(userData._tokenExpirationDate),
-            redirect: false,
+            redirect: true,
           });
         }
 
@@ -197,6 +200,8 @@ export class AuthEffects {
     { dispatch: false }
   );
 }
+
+// ********************************* NGRX Old Syntax *********************************
 
 // import { Injectable } from '@angular/core';
 // import { Router } from '@angular/router';

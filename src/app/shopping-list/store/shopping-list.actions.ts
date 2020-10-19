@@ -1,3 +1,5 @@
+// ********************************* NGRX New Syntax(V8) *********************************
+
 import { createAction, props } from '@ngrx/store';
 import { Ingredient } from '../../shared/ingredient.model';
 
@@ -34,6 +36,8 @@ export const startEdit = createAction(
 );
 
 export const stopEdit = createAction('[Shopping List] Stop Edit');
+
+// ********************************* NGRX Old Syntax *********************************
 
 // import { Ingredient } from './../../shared/ingredient.model';
 // import { Action } from '@ngrx/store';

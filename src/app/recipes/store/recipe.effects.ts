@@ -1,3 +1,5 @@
+// ********************************* NGRX New Syntax(V8) *********************************
+
 import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { map, switchMap, withLatestFrom } from 'rxjs/operators';
@@ -54,6 +56,8 @@ export class RecipeEffects {
     private store: Store<fromAppReducer.AppState>
   ) {}
 }
+
+// ********************************* NGRX Old Syntax *********************************
 
 // import { Store } from '@ngrx/store';
 // import { HttpClient } from '@angular/common/http';

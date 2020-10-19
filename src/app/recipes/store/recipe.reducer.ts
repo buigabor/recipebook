@@ -1,3 +1,5 @@
+// ********************************* NGRX New Syntax(V8) *********************************
+
 import { createReducer, on, Action } from '@ngrx/store';
 import { Recipe } from '../recipe.model';
 import * as RecipesActions from '../store/recipe.actions';
@@ -44,6 +46,9 @@ const _recipeReducer = createReducer(
 export function recipeReducer(state: State, action: Action) {
   return _recipeReducer(state, action);
 }
+
+// ********************************* NGRX Old Syntax *********************************
+
 // import { Recipe } from './../recipe.model';
 // import * as RecipesActions from './recipe.actions';
 

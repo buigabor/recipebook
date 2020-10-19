@@ -1,3 +1,5 @@
+// ********************************* NGRX New Syntax(V8) *********************************
+
 import { createAction, props } from '@ngrx/store';
 import { Recipe } from '../recipe.model';
 
@@ -24,6 +26,8 @@ export const setRecipes = createAction(
 export const fetchRecipes = createAction('[Recipe] Fetch Recipes');
 
 export const storeRecipes = createAction('[Recipe] Store Recipes');
+
+// ********************************* NGRX Old Syntax *********************************
 
 // import { Action } from '@ngrx/store';
 // import { Recipe } from '../recipe.model';
