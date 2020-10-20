@@ -12,6 +12,7 @@ const initialState = {
   recipes: [],
 };
 
+// tslint:disable-next-line: variable-name
 const _recipeReducer = createReducer(
   initialState,
   on(RecipesActions.addRecipe, (state, action) => ({
@@ -43,7 +44,7 @@ const _recipeReducer = createReducer(
   }))
 );
 
-export function recipeReducer(state: State, action: Action) {
+export function recipeReducer(state: State, action: Action): State {
   return _recipeReducer(state, action);
 }
 

@@ -14,6 +14,7 @@ const initialState: State = {
   editIndex: -1,
 };
 
+// tslint:disable-next-line: variable-name
 const _shoppingListReducer = createReducer(
   initialState,
   on(ShoppingListActions.addIngredient, (state, action) => ({
@@ -53,7 +54,7 @@ const _shoppingListReducer = createReducer(
   }))
 );
 
-export function shoppingListReducer(state: State, action: Action) {
+export function shoppingListReducer(state: State, action: Action): State {
   return _shoppingListReducer(state, action);
 }
 

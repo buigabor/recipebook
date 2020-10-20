@@ -1,6 +1,7 @@
 import { take, exhaustMap, map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import {
+  HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpParams,
@@ -10,6 +11,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as fromAppReducer from '../store/app.reducer';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptorService implements HttpInterceptor {
@@ -17,10 +19,13 @@ export class AuthInterceptorService implements HttpInterceptor {
     private authService: AuthService,
     private store: Store<fromAppReducer.AppState>
   ) {}
-  intercept(req: HttpRequest<any>, next: HttpHandler) {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     return this.store.select('auth').pipe(
       take(1),
-      map((authState)  =>  {
+      map((authState) => {
         return authState.user;
       }),
       exhaustMap((user) => {
@@ -34,17 +39,18 @@ export class AuthInterceptorService implements HttpInterceptor {
       })
     );
 
-  //   return this.authService.user.pipe(
-  //     take(1),
-  //     exhaustMap((user) => {
-  //       if (!user) {
-  //         return next.handle(req);
-  //       }
-  //       const modifiedReq = req.clone({
-  //         params: new HttpParams().set('auth', user.token),
-  //       });
-  //       return next.handle(modifiedReq);
-  //     })
-  //   );
-  // }
-}}
+    //   return this.authService.user.pipe(
+    //     take(1),
+    //     exhaustMap((user) => {
+    //       if (!user) {
+    //         return next.handle(req);
+    //       }
+    //       const modifiedReq = req.clone({
+    //         params: new HttpParams().set('auth', user.token),
+    //       });
+    //       return next.handle(modifiedReq);
+    //     })
+    //   );
+    // }
+  }
+}

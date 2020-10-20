@@ -1,6 +1,6 @@
 // ********************************* NGRX New Syntax(V8) *********************************
 
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
 import { User } from '../user.model';
 import * as AuthActions from './auth.actions';
 
@@ -16,7 +16,8 @@ const initialState: State = {
   loading: false,
 };
 
-const _authReducer = createReducer(
+// tslint:disable-next-line: variable-name
+const _authReducer: ActionReducer<State> = createReducer(
   initialState,
   on(AuthActions.loginStart, AuthActions.signupStart, (state) => ({
     ...state,
@@ -51,7 +52,7 @@ const _authReducer = createReducer(
   }))
 );
 
-export function authReducer(state: State, action: Action) {
+export function authReducer(state: State, action: Action): State {
   return _authReducer(state, action);
 }
 
