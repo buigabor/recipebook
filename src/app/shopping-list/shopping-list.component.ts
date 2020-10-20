@@ -1,5 +1,5 @@
+import { Ingredient } from 'src/app/shared/ingredient.model';
 import { fade } from './../animations';
-import { Ingredient } from './../shared/ingredient.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -14,6 +14,7 @@ import * as fromAppRecuer from '../store/app.reducer';
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
   ingredients: Observable<{ ingredients: Ingredient[] }>;
+  // ingredients: Ingredient[];
   constructor(private store: Store<fromAppRecuer.AppState>) {}
 
   ngOnInit(): void {

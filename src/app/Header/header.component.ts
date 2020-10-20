@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
-import { Subscription, Subject } from 'rxjs';
-import { Component, OnInit, OnDestroy, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import * as fromAppReducer from '../store/app.reducer';
