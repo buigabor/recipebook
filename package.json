@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start:heroku":"node dist/server",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -12,7 +12,7 @@
     "serve:ssr": "node dist/ShoppingCart/server/main.js",
     "build:ssr": "ng build --prod && ng run ShoppingCart:server:production",
     "prerender": "ng run ShoppingCart:prerender",
-    "postinstall": "ng build --prod --aot"
+    "postinstall": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
