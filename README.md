@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Website link
 
-https://ng-recipe-book-2a63a.web.app/recipes
+https://recipesbookapp.herokuapp.com/
