@@ -7,7 +7,7 @@ This project was made to practice Angular 10 core concepts and to fully understa
 - Angular core concepts
 - Components & Databinding
 - Directives, services + dependency injection, pipes and routing
-- Both Template driven and Reactive forms
+- Both template driven and reactive forms
 - HTTP services, authentication
 - NgRX v10
 - RxJS
